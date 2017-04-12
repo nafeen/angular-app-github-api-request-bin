@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="testApp"> 
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Yoshi - An Angular App</title>
+
+	<link rel="icon" href="_images/kitten3_render.png" sizes="16x16" type="image/png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Local Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="_styles/bootstrap-editable.css">
+	<link rel="stylesheet" type="text/css" href="_styles/style.css">
+
+</head>
+<body>
+	
+	<div class="container-fluid header-container">
+		<div class="row align-items-center" style="height: 100%;">
+	    <div class="col-12 text-center">
+	    <img src="_images/kitten3_render.png" class="yoshi img-responsive" alt="Yoshi The Cat">
+	      <h1 class="header-text">Yoshi - An Angular App</h1>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="container main-container" data-ng-controller="ajaxController">
+		<div class="row justify-content-md-center">
+			<div class="col-sm-12">
+				<table class="table table-hover main-table display-table" id="spreadsheet">
+					<thead>
+						<tr>
+							<th class="text-center table-header-row">Profile Image</th>
+							<th class="text-center table-header-row">Repo Name</th>
+							<th class="text-center table-header-row">User Name</th>
+							<th class="text-center table-header-row">User Type</th>
+							<th class="text-center table-header-row">Repo Description</th>
+							<th class="text-center"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="item in apiData">
+							<td class="display-cell">
+								<img class="d-flex mr-3 img-thumbnail" src="{{ item.owner.avatar_url }}" alt="Loading..." style="height: 60px; width: 60px; font-size: 9px;">
+							</td>
+							<td class="display-cell">
+								<span class="mt-0 repo-name">
+							    	<a ng-href='{{ item.html_url }}' target='_blank' style="display: inline-block;">{{ item.name }}</a>
+								</span>
+							</td>
+							<td class="display-cell">
+								<p>{{ item.owner.login }}</p>
+							</td>
+							<td class="display-cell">
+								<span class="label label-danger edit">{{ item.owner.type }}</span>
+							</td>
+							<td class="display-cell">
+								<p><small class="text-muted">{{ item.description }}</small></p>
+							</td>	
+							<td class="edit-button display-cell">
+								<button class="btn btn-success edit-button" data-toggle="modal" data-target="#myModal">Edit</button>
+							</td>
+						</tr>
+						<tr id="scrolled-till-here"></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content"></div>
+	    </div>
+	    <div class="modal-dialog">
+	        <div class="modal-content"></div>
+	    </div>
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+
+	                </button>
+	                 <h4 class="modal-title" id="myModalLabel">Edit Data and Send API Request</h4>
+
+	            </div>
+	            <div class="modal-body"></div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                <button type="button" class="btn btn-primary">Send API Request</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+
+
+	<!-- External Scripts -->
+	<script type="text/javascript" src="_scripts/angular.js"></script>
+	<script type="text/javascript" src="_scripts/angular-route.min.js" ></script>
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="_scripts/bootstrap-editable.js" ></script>
+
+	<!-- Local Scripts -->
+	<script type="text/javascript" src="_ng_main/main.js" ></script>
+	<script type="text/javascript" src="_ng_directives/directives.js" ></script>
+	<script type="text/javascript" src="_ng_services/factories.js" ></script>
+	<script type="text/javascript" src="_ng_controllers/controllers.js" ></script>
+
+	<script type="text/javascript">
+		$(window).scroll(function() {
+			var hT = $('#scrolled-till-here').offset().top,
+				hH = $('#scrolled-till-here').outerHeight(),
+				wH = $(window).height(),
+				wS = $(this).scrollTop();
+			if (wS > (hT+hH-wH)){
+				console.log('Loading more Data..!');
+				pullMoreData();
+			}	
+		});
+
+		setTimeout(delayFunc, 2000);
+
+		function delayFunc() {
+			// console.log("Delay Function Loaded...");
+			$(".btn[data-target='#myModal']").click(function() {
+				var columnHeadings = $("thead th").map(function() {
+					return $(this).text();
+				}).get();
+
+				columnHeadings.pop();
+
+				var columnValues = $(this).parent().siblings().map(function() {
+					return $(this).text();
+				}).get();
+
+				var modalBody = $('<div id="modalContent"></div>');
+				var modalForm = $('<form role="form" name="modalForm" action="http://requestb.in/1dh7kim1" method="post"></form>');
+				
+				$.each(columnHeadings, function(i, columnHeader) {
+					if (i > 0) {
+						var formGroup = $('<div class="form-group"></div>');
+						formGroup.append('<label for="'+columnHeader+'">'+columnHeader+'</label>');
+						formGroup.append('<input class="form-control" name="'+columnHeader+'" id="'+columnHeader+i+'" value="'+columnValues[i].trim()+'" />'); 
+						modalForm.append(formGroup);
+					}
+				});
+				
+				modalBody.append(modalForm);
+				$('.modal-body').html(modalBody);
+			});
+
+			$('.modal-footer .btn-primary').click(function() {
+				$.post('http://requestb.in/sll9nnsl', $('form[name="modalForm"]').serialize());
+				$('#myModal').modal('hide');
+			});
+		}
+
+		function pullMoreData() {
+			// alert("BOOM!");
+			var scope = angular.element($("#scrolled-till-here")).scope();
+			scope.$apply(function(){
+				scope.boom(scope.nextLink);
+			})
+		}
+	</script>
+
+</body>
+</html>

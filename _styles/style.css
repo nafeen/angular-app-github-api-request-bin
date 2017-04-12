@@ -1,0 +1,50 @@
+
+.edit-button 							{
+											display: none;
+										}
+
+.display-table							{
+											display: table;
+											table-layout: fixed;
+											text-align: center;
+										}
+
+.display-cell							{
+										    display: table-cell;
+										    vertical-align: middle;
+										    float: none;
+										    text-align: center;
+										    word-wrap: break-word;
+										}
+
+.header-container 						{
+											background-image: linear-gradient(rgb(1, 67, 163), rgb(2, 115, 212));
+											height: 200px;
+										}
+
+.header-text							{
+											color: white;
+											margin-top: 80px;
+											display: inline-block;
+										}
+
+.main-table								{
+											margin-top: 50px;
+										}
+
+.repo-name								{
+											font-weight: 600;
+										}
+
+tr:hover .edit-button					{
+											display: inline-block;
+										}
+
+.table-header-row						{
+											font-weight: 600;
+										}
+
+.yoshi									{
+											display: inline-block;
+											width: 100px;
+										}
